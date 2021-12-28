@@ -29,7 +29,12 @@ app.post("/upload", upload.single('image'), (req, res) => {
 })
 
 app.get('/images/:id', function(req, res) {
-    res.sendFile(__dirname + "/images/" + req.params.id)   
+    if(req){
+    res.sendFile(__dirname + "/images/" + req.params.id)
+    }
+    else{
+        return 'error'
+    }   
 });
 
 app.listen(PORT, () => {
